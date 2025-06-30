@@ -56,6 +56,17 @@ class GameManager:
         """
         return self._current_player
 
+    def set_current_player(self, player: int) -> None:
+        """
+        Set the current player.
+
+        Parameters
+        ----------
+        player : int
+            The player to set as current (1 for black, 2 for white, 0 for game ended)
+        """
+        self._current_player = player
+
     def _flip_stones_in_direction(  # noqa: PLR0913
         self,
         start_row: int,

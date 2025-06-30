@@ -1,3 +1,5 @@
+from typing import Any
+
 from otheller.core.manager import GameManager
 from otheller.core.placement import Placement
 from otheller.core.score import ScoreCalculator
@@ -35,6 +37,73 @@ class Board:
         self._placement = Placement(self._state)
         self._score_calculator = ScoreCalculator(self._state)
         self._game_manager = GameManager(self._state, self._placement)
+
+    @classmethod
+    def create_copy(cls, original: "Board") -> "Board":
+        """
+        Create an independent copy of the board for simulation purposes.
+
+        This method creates a new Board instance with the same state as the original
+        but completely independent memory allocation to prevent any interference
+        between simulation and actual game state.
+
+        Parameters
+        ----------
+        original : Board
+            The board to copy
+
+        Returns
+        -------
+        Board
+            A new Board instance with identical state to the original
+
+        Notes
+        -----
+        This method preserves the facade pattern by providing a public interface
+        for creating board copies without exposing internal implementation details.
+        """
+        # Create new instance with default initialization
+        copy_board = cls()
+
+        # Copy board state using public interface
+        original_board_data = original.board
+        for row in range(copy_board.size):
+            for col in range(copy_board.size):
+                copy_board._state.set_cell_value(row, col, original_board_data[row][col])
+
+        # Copy the current player state directly
+        copy_board._game_manager.set_current_player(original.current_player)
+
+        return copy_board
+
+    def create_snapshot(self) -> dict[str, Any]:
+        """
+        Create a snapshot of the current board state for restoration.
+
+        Returns
+        -------
+        dict[str, Any]
+            A dictionary containing all necessary state information
+        """
+        return {
+            "board": self.board,
+            "current_player": self.current_player,
+        }
+
+    def restore_from_snapshot(self, snapshot: dict[str, Any]) -> None:
+        """
+        Restore the board state from a snapshot.
+
+        Parameters
+        ----------
+        snapshot : dict[str, Any]
+            The snapshot data to restore from
+        """
+        board_data = snapshot["board"]
+        for row in range(self.size):
+            for col in range(self.size):
+                self._state.set_cell_value(row, col, board_data[row][col])
+        self._game_manager.set_current_player(snapshot["current_player"])
 
     @property
     def board(self) -> list[list[int]]:
@@ -120,6 +189,23 @@ class Board:
             A tuple containing (black_stones_count, white_stones_count)
         """
         return self._score_calculator.get_score()
+
+    def get_winner(self) -> int:
+        """
+        Get the winner of the game.
+
+        Determines the winner based on who has more stones on the board.
+        Should typically be called when the game has ended.
+
+        Returns
+        -------
+        int
+            The winner identifier:
+            - 1 if black player has more stones
+            - 2 if white player has more stones
+            - 0 if the game is tied
+        """
+        return self._score_calculator.get_winner()
 
     def make_move(
         self,
