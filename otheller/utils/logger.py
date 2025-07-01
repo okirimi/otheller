@@ -23,4 +23,7 @@ def setup_logger(level: str) -> logging.Logger:
             file_handler,  # output logs to a log file
         ],
     )
+
+    # logging.getLogger() returns a singleton per name;
+    # no need to manage logger instances manually
     return logging.getLogger(__name__)

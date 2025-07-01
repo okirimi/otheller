@@ -15,7 +15,6 @@ def _parse_args_and_setup_logging() -> Logger:
     logging.Logger
         Configured logger instance with the log level specified
         by the --log command line argument.
-
     """
     parser = argparse.ArgumentParser()
     parser.add_argument(
@@ -29,4 +28,5 @@ def _parse_args_and_setup_logging() -> Logger:
     return setup_logger(args.log)  # type: ignore
 
 
+# This is a singleton logger instance
 logger = _parse_args_and_setup_logging()
