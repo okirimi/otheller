@@ -147,6 +147,20 @@ class Board:
         """
         return self._game_manager.current_player
 
+    @current_player.setter
+    def current_player(self, player: int) -> None:
+        """
+        Set the current player.
+
+        Parameters
+        ----------
+        player : int
+            The player identifier:
+            - 1 for black player
+            - 2 for white player
+        """
+        self._game_manager.set_current_player(player)
+
     def is_valid_move(
         self,
         target_row: int,
