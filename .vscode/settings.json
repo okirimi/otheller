@@ -1,0 +1,13 @@
+{
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "eslint.nodePath": ".yarn/sdks",
+  "prettier.configPath": "./.prettierrc.json",
+  "prettier.ignorePath": "./.prettierignore",
+  "prettier.prettierPath": ".yarn/sdks/prettier/index.cjs",
+  "search.exclude": {
+    "**/.pnp.*": true,
+    "**/.yarn": true
+  }
+}

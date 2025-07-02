@@ -1,0 +1,8 @@
+{
+  "name": "otheller",
+  "packageManager": "yarn@4.9.2",
+  "private": true,
+  "devDependencies": {
+    "prettier": "^3.6.2"
+  }
+}
