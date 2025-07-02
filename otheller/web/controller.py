@@ -138,7 +138,7 @@ class WebGameController:
             else:
                 self.human_vs_ai_controller.setup_ai_vs_ai()
             self.human_vs_ai_controller.set_waiting_for_human(
-                state_data.get("waiting_for_human", False),
+                waiting=state_data.get("waiting_for_human", False),
             )
 
             # Restore board state
@@ -271,14 +271,14 @@ class WebGameController:
         # Determine if it's human or AI turn
         if self.human_vs_ai_controller.is_human_turn(current_player):
             if human_move is None:
-                self.human_vs_ai_controller.set_waiting_for_human(True)
+                self.human_vs_ai_controller.set_waiting_for_human(waiting=True)
                 self.save_state()
                 return self.get_current_state()
             # Execute human move
             row, col = human_move
             if self.make_move_with_tracking(row, col, current_player):
                 self.move_count += 1
-                self.human_vs_ai_controller.set_waiting_for_human(False)
+                self.human_vs_ai_controller.set_waiting_for_human(waiting=False)
                 self.save_state()
                 return self.get_current_state()
             return None
