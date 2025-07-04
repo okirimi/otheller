@@ -12,10 +12,10 @@
 ### インストールと環境設定
 
 ```
-# 1. Clone repository
+# Clone repository
 git clone https://github.com/okirimi/otheller.git && cd otheller/
 
-# 2. Creates `.venv` based on the dependencies in `uv.lock`.
+# Creates `.venv` based on the dependencies in `uv.lock`.
 uv sync
 ```
 
@@ -36,7 +36,7 @@ python -m otheller.main --log <log_level>
 
 ### Step 1: 戦略ファイルの準備
 
-```
+```bash
 # strategy.pyをコピーして新しい戦略ファイルを作成
 cp otheller/strategy.py otheller/my_custom_strategy.py
 ```
@@ -101,11 +101,3 @@ return best_move
 3. 「ファイルを選択」ボタンで作成した戦略ファイル（例: `my_custom_strategy.py`）をアップロード
 
 4. 「Human vs AI」または「AI vs AI」モードで対戦開始
-
-### 開発のコツ
-
-- **メソッドの切り出し**: コードが長くなる場合は `MyStrategy` クラスにメソッドを追加して整理しましょう
-
-- **盤面分析**: `board.get_valid_moves()` や `board.get_score()` 等のメソッドを活用しましょう
-
-- **デバッグ**: エラーが解決しないときは `--log DEBUG` を使って詳細なログを確認してみましょう
