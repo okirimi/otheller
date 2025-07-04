@@ -1,6 +1,6 @@
 # Otheller
 
-![Python](https://img.shields.io/badge/Python-3.12-blue.svg?logo=python&logoColor=white&style=flat&labelColor=24292e)
+![Python](https://img.shields.io/badge/Python-3.10%20%7C%203.11%20%7C%203.12-blue.svg?logo=python&logoColor=white&style=flat&labelColor=24292e)
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E.svg?logo=javascript&logoColor=black&style=flat)
 [![Flask](https://img.shields.io/badge/Flask-3.1.1-3b808b.svg?logo=flask&logoColor=white&labelColor=24292e)](https://flask.palletsprojects.com/)
 ![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
@@ -9,7 +9,13 @@
 
 ## 🚀 Getting Started
 
+### 事前準備
+
+Python のバージョン管理とパッケージ管理を一元的に行えるツールとして、uv の利用を推奨します。詳しい情報や導入手順は[公式サイト](https://docs.astral.sh/uv/getting-started/installation/)を参照してください。
+
 ### インストールと環境設定
+
+#### With `uv`
 
 ```bash
 # Clone repository
@@ -17,6 +23,18 @@ git clone https://github.com/okirimi/otheller.git && cd otheller/
 
 # Creates `.venv` based on the dependencies in `uv.lock`.
 uv sync
+```
+
+#### Without `uv`
+
+`.python-versions` に指定された Python バージョンを使っていることを確認してください。以下のコマンドで仮想環境を作成し、依存関係をインストールしてください。
+
+```bash
+python -m venv .venv
+
+source .venv/bin/acvibate
+
+pip install -r requirements.lock
 ```
 
 ### アプリの起動

@@ -1,5 +1,8 @@
+# asdf
+.tool-versions
+
 # Environment
-.venv/
+.venv*/
 
 # Logs
 logs/
