@@ -11,7 +11,7 @@
 
 ### インストールと環境設定
 
-```
+```bash
 # Clone repository
 git clone https://github.com/okirimi/otheller.git && cd otheller/
 
