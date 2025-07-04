@@ -1,7 +1,6 @@
 # Otheller
 
 ![Python](https://img.shields.io/badge/Python-3.10%20%7C%203.11%20%7C%203.12-blue.svg?logo=python&logoColor=white&style=flat&labelColor=24292e)
-![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E.svg?logo=javascript&logoColor=black&style=flat)
 [![Flask](https://img.shields.io/badge/Flask-3.1.1-3b808b.svg?logo=flask&logoColor=white&labelColor=24292e)](https://flask.palletsprojects.com/)
 ![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
 
